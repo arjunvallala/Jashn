@@ -57,8 +57,7 @@ export function compareVendorQuoteToBudget(
  * FORBIDS synthetic phone numbers, fake reviews, or fake business names.
  */
 export function sanitizeVendorSuggestions(text: string): string {
-  // Regex pattern matching phone numbers (+91, 10-digit mobile numbers, etc.)
-  const phonePattern = /(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\b/g;
-  // Replace phone numbers with redacted notice if an AI slipped one in
+  // Regex pattern matching Indian (10-digit mobile, 5+5), US/Intl (7-digit, 10-digit with country code)
+  const phonePattern = /(?:\+?\d{1,3}[\s-]?)?(?:\d{5}[\s-]?\d{5}|\d{4}[\s-]?\d{3}[\s-]?\d{3}|\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}|\d{3}[\s.-]\d{4}|\b[6-9]\d{9}\b)/g;
   return text.replace(phonePattern, '[Phone Number Redacted - Verify with Vendor Directly]');
 }

@@ -111,13 +111,7 @@ export default function HomePage() {
     handleUpdatePlan({ ...plan, tasks: updatedTasks });
   };
 
-  if (!isHydrated) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-background text-muted-foreground font-semibold text-sm">
-        Loading Jashn Planner...
-      </div>
-    );
-  }
+
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground transition-colors">

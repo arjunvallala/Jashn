@@ -33,9 +33,10 @@ export class MockGeminiClient implements GeminiClient {
     this.lastPrompt = prompt;
     this.lastSystemInstruction = systemInstruction;
 
-    if (this.behavior.mode === 'timeout') {
-      await new Promise(resolve => setTimeout(resolve, this.behavior.delayMs));
-      throw new Error(`MockGeminiClient: Request timed out after ${this.behavior.delayMs}ms`);
+    const behavior = this.behavior;
+    if (behavior.mode === 'timeout') {
+      await new Promise(resolve => setTimeout(resolve, behavior.delayMs));
+      throw new Error(`MockGeminiClient: Request timed out after ${behavior.delayMs}ms`);
     }
 
     if (this.behavior.mode === 'http_error') {
@@ -54,7 +55,11 @@ export class MockGeminiClient implements GeminiClient {
       return schema.parse(invalidData); // will throw ZodError
     }
 
-    return schema.parse(this.behavior.data);
+    if (behavior.mode === 'success') {
+      return schema.parse(behavior.data);
+    }
+
+    return schema.parse({});
   }
 
   public async chatWithTools(

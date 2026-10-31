@@ -160,7 +160,7 @@ export function proportionalSplit(
   });
 
   const totalAllocatedPaise = toPaise(
-    allocations.reduce((sum, item) => sum + item.allocatedPaise, contingencyPaise),
+    allocations.reduce((sum: number, item) => sum + item.allocatedPaise, Number(contingencyPaise)),
   );
 
   return {

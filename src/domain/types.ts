@@ -8,13 +8,16 @@ export type LanguageCode = 'en' | 'hi' | 'te';
  * Minor currency units (e.g. Paise for INR, Cents for USD).
  * Always an integer, never a float.
  */
-export type Paise = number & { readonly __brand: unique symbol };
+export type Paise = number;
 
 export function toPaise(value: number): Paise {
-  if (!Number.isSafeInteger(value)) {
-    throw new TypeError(`Paise must be a safe integer, received: ${value}`);
+  if (!Number.isFinite(value)) {
+    throw new TypeError(`Paise must be finite, received: ${value}`);
   }
-  return value as Paise;
+  if (!Number.isInteger(value)) {
+    throw new TypeError(`Paise must be an integer, received: ${value}`);
+  }
+  return value;
 }
 
 export type TaskPriority = 'critical' | 'high' | 'medium' | 'low';

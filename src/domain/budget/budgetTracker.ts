@@ -30,7 +30,7 @@ export function calculateBudgetSummary(
 ): BudgetSummary {
   const safeGuestCount = Math.max(1, guestCount);
   let totalSpent = 0;
-  let totalAllocated = budget.contingencyPaise;
+  let totalAllocated: number = Number(budget.contingencyPaise);
   const categoryAlerts: OverspendAlert[] = [];
 
   for (const cat of budget.categories) {

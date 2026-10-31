@@ -105,7 +105,7 @@ export class RealGeminiClient implements GeminiClient {
       for (const part of candidate.content.parts) {
         if (part.functionCall) {
           functionCalls.push({
-            toolName: part.functionCall.name,
+            toolName: part.functionCall.name || 'unnamed_tool',
             arguments: (part.functionCall.args as Record<string, unknown>) ?? {},
           });
         }

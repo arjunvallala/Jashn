@@ -16,7 +16,7 @@ if (typeof window !== 'undefined') {
 
   Object.defineProperty(window, 'webkitSpeechRecognition', {
     writable: true,
-    value: window.SpeechRecognition,
+    value: (window as unknown as { SpeechRecognition: unknown }).SpeechRecognition,
   });
 
   Object.defineProperty(window, 'speechSynthesis', {

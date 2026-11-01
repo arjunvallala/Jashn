@@ -36,7 +36,7 @@ const nextConfig = {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-eval'", // unsafe-eval permitted for dev/hydration, scripts locked to self
+              "script-src 'self' 'unsafe-eval' 'unsafe-inline'", // Next.js App Router inline hydration scripts
               "style-src 'self' 'unsafe-inline'", // tailwind utility classes
               "img-src 'self' data: blob:",
               "font-src 'self' data:",

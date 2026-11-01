@@ -128,9 +128,11 @@ export const IdeasScreen: React.FC<IdeasScreenProps> = ({
       </div>
 
       {/* Category Tabs */}
-      <div className="flex space-x-2 overflow-x-auto pb-2 no-scrollbar" role="tablist">
+      <div className="flex space-x-2 overflow-x-auto pb-2 no-scrollbar" role="tablist" aria-label="Idea Categories">
         <button
           type="button"
+          role="tab"
+          aria-selected={selectedCategory === 'all'}
           onClick={() => setSelectedCategory('all')}
           className={`px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap min-h-touch transition-all ${
             selectedCategory === 'all'
@@ -144,6 +146,8 @@ export const IdeasScreen: React.FC<IdeasScreenProps> = ({
           <button
             key={cat.id}
             type="button"
+            role="tab"
+            aria-selected={selectedCategory === cat.id}
             onClick={() => setSelectedCategory(cat.id)}
             className={`px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap min-h-touch transition-all ${
               selectedCategory === cat.id

@@ -90,21 +90,23 @@ export const TimelineScreen: React.FC<TimelineScreenProps> = ({
             <button
               type="button"
               onClick={() => setViewMode('list')}
+              aria-label="Switch to list view"
               className={`p-1.5 rounded-lg text-xs font-bold min-h-touch min-w-touch flex items-center space-x-1 ${
                 viewMode === 'list' ? 'bg-card text-foreground shadow-sm' : 'text-muted-foreground'
               }`}
             >
-              <List className="w-4 h-4" />
+              <List className="w-4 h-4" aria-hidden="true" />
               <span className="hidden sm:inline">List</span>
             </button>
             <button
               type="button"
               onClick={() => setViewMode('calendar')}
+              aria-label="Switch to calendar view"
               className={`p-1.5 rounded-lg text-xs font-bold min-h-touch min-w-touch flex items-center space-x-1 ${
                 viewMode === 'calendar' ? 'bg-card text-foreground shadow-sm' : 'text-muted-foreground'
               }`}
             >
-              <CalendarIcon className="w-4 h-4" />
+              <CalendarIcon className="w-4 h-4" aria-hidden="true" />
               <span className="hidden sm:inline">Calendar</span>
             </button>
           </div>
@@ -163,7 +165,7 @@ export const TimelineScreen: React.FC<TimelineScreenProps> = ({
           <div
             key={task.id}
             className={`p-4 sm:p-5 flex items-start justify-between gap-4 transition-colors ${
-              task.completed ? 'bg-muted/30 opacity-75' : 'hover:bg-muted/20'
+              task.completed ? 'bg-muted/40' : 'hover:bg-muted/20'
             }`}
           >
             <div className="flex items-start space-x-3.5">

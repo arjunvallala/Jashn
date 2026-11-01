@@ -294,7 +294,7 @@ export const BudgetScreen: React.FC<BudgetScreenProps> = ({
           <h2 className="text-base font-bold text-foreground">Detailed Category Ledger</h2>
         </div>
 
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-b-2xl" tabIndex={0} role="region" aria-label="Detailed Category Ledger Table">
           <table className="w-full text-left text-sm" aria-label="Budget Categories Ledger">
             <thead className="bg-muted/50 text-xs font-bold uppercase text-muted-foreground border-b border-border">
               <tr>

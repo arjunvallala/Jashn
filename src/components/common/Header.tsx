@@ -56,7 +56,7 @@ export const Header: React.FC<HeaderProps> = ({
   ];
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-border bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/75">
+    <header className="sticky top-0 z-40 w-full border-b border-border bg-card shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Brand Logo & Name */}
@@ -64,7 +64,7 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               type="button"
               onClick={() => onSelectTab('dashboard')}
-              className="flex items-center space-x-2 text-primary font-black text-2xl tracking-tight focus-visible:ring-2 focus-visible:ring-primary rounded-lg p-1"
+              className="flex items-center space-x-2 text-primary font-black text-2xl tracking-tight focus-visible:ring-2 focus-visible:ring-primary rounded-lg p-1 min-h-touch"
               aria-label="Jashn - Celebration Planner Home"
             >
               <span className="p-2 bg-primary/10 text-primary rounded-xl">
@@ -203,11 +203,14 @@ export const Header: React.FC<HeaderProps> = ({
                 <button
                   key={tab.id}
                   type="button"
-                  onClick={() => onSelectTab(tab.id)}
-                  className={`px-3.5 py-2 rounded-lg text-sm font-semibold whitespace-nowrap min-h-touch transition-all ${
+                  onClick={(e) => {
+                    e.currentTarget.scrollIntoView({ inline: 'center', block: 'nearest' });
+                    onSelectTab(tab.id);
+                  }}
+                  className={`px-3.5 py-2 rounded-lg text-sm font-bold whitespace-nowrap min-h-touch transition-all ${
                     isActive
                       ? 'bg-primary text-primary-foreground shadow-sm'
-                      : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                      : 'text-foreground hover:bg-muted'
                   }`}
                   aria-current={isActive ? 'page' : undefined}
                 >
